@@ -1008,6 +1008,8 @@ impl MemoryMap {
 impl Drop for MemoryMap {
     /// Unmap the mapping. Fails the task if `munmap` fails.
     fn drop(&mut self) {
+        if self.len == 0 { /* workaround for dummy_stack */ return; }
+
         unsafe {
             match libc::munmap(self.data as *c_void, self.len) {
                 0 => (),
