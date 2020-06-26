@@ -286,11 +286,7 @@ impl<'tcx> Body<'tcx> {
     pub fn temps_iter<'a>(&'a self) -> impl Iterator<Item = Local> + 'a {
         (self.arg_count + 1..self.local_decls.len()).filter_map(move |index| {
             let local = Local::new(index);
-            if self.local_decls[local].is_user_variable() {
-                None
-            } else {
-                Some(local)
-            }
+            if self.local_decls[local].is_user_variable() { None } else { Some(local) }
         })
     }
 
@@ -1177,11 +1173,7 @@ impl<'tcx> BasicBlockData<'tcx> {
     }
 
     pub fn visitable(&self, index: usize) -> &dyn MirVisitable<'tcx> {
-        if index < self.statements.len() {
-            &self.statements[index]
-        } else {
-            &self.terminator
-        }
+        if index < self.statements.len() { &self.statements[index] } else { &self.terminator }
     }
 }
 
