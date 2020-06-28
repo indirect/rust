@@ -1281,8 +1281,6 @@ mod self_upper_keyword {}
 
 #[doc(keyword = "static")]
 //
-/// A place that is valid for the duration of a program.
-///
 /// A static item is a value which is valid for the entire duration of your
 /// program (a `'static` lifetime).
 ///
@@ -1298,7 +1296,7 @@ mod self_upper_keyword {}
 /// There are two types of `static` items: those declared in association with
 /// the [`mut`] keyword and those without.
 ///
-/// Items that are both static and owned cannot be moved:
+/// Static items cannot be moved:
 ///
 /// ```rust,compile_fail,E0507
 /// static VEC: Vec<u32> = vec![];
@@ -1307,6 +1305,7 @@ mod self_upper_keyword {}
 ///     v
 /// }
 ///
+/// // This line causes an error
 /// move_vec(VEC);
 /// ```
 ///
@@ -1324,7 +1323,7 @@ mod self_upper_keyword {}
 /// let r2 = &FOO as *const _;
 /// // With a strictly read-only static, references will have the same adress
 /// assert_eq!(r1, r2);
-/// // A static item is used just like a variable
+/// // A static item can be used just like a variable in many cases
 /// println!("{:?}", FOO);
 /// ```
 ///
