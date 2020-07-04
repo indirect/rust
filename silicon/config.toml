@@ -124,7 +124,7 @@
 # toolchains for. Each of these triples will be bootstrapped from the build
 # triple and then will continue to bootstrap themselves. This platform must
 # currently be able to run all of the triples provided here.
-#host = ["/Users/shep/Projects/rust/silicon/aarch64-apple-darwin.json"]   # defaults to just the build triple
+host = ["aarch64-apple-darwin"]
 
 # In addition to all host triples, other triples to produce the standard library
 # for. Each host triple will be used to produce a copy of the standard library
@@ -141,7 +141,7 @@
 
 # Instead of downloading the src/stage0.txt version of the compiler
 # specified, use this rustc binary instead as the stage0 snapshot compiler.
-rustc = "/Users/andre/stage1-x86_64-apple-darwin/bin/rustc"
+rustc = "/Users/andre/stage1-x86_64-apple-darwin-libc/bin/rustc"
 
 # Instead of download the src/stage0.txt version of rustfmt specified,
 # use this rustfmt binary instead as the stage0 snapshot rustfmt.
